@@ -1,123 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>/ Laundry Mart</title>
-    <style>
-        body {Laundry Wallah 
-            font-family: Arial;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
+<meta charset="UTF-8">
+<title>CI Calculator</title>
 
-        header {
-            background-color: #d9d9d9;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid black;
-        }
+<style>
+body {
+    font-family: Arial;
+    background: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        .container {
-            padding: 20px;
-        }
+/* Card */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
 
-        img {
-            width: 200px;
-        }
+h2 {
+    margin-bottom: 20px;
+}
 
-        h2 {
-            margin-top: 30px;
-        }
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
 
-        ul {
-            line-height: 1.8;
-        }
+/* Button */
+button {
+    background: #2da9e3;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        table {
-            border-collapse: collapse;
-            width: 300px;
-        }
+/* Transform Effect */
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
+/* Result */
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
 
-        form input {
-            padding: 5px;
-            margin: 5px;
-        }
-
-        button {
-            padding: 5px 10px;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-        }
-    </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Welcome to Laundry Wallah / Laundry Mart</h1>
-    <p>
-        Welcome to Laundry Wallah / Laundry Mart, your one-stop solution for all your laundry needs.
-        Our dedicated team ensures top-notch service, providing a hassle-free and efficient laundry experience.
-    </p>
-</header>
-
 <div class="container">
+    <h2>CI Calculator</h2>
 
-    <!-- Image -->
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Laundry Image">
+    <input type="number" id="principal" placeholder="Principal (₹)">
+    <input type="number" id="rate" placeholder="Rate (%)">
+    <input type="number" id="time" placeholder="Time (Years)">
 
-    <!-- Services -->
-    <h2>Our Services</h2>
-    <ul>
-        <li>Washing and Drying</li>
-        <li>Ironing and Folding</li>
-        <li>Dry Cleaning</li>
-        <li>Stain Removal</li>
-        <li>Express Services</li>
-        <li>Special Garment Care</li>
-        <li>And more...</li>
-    </ul>
+    <button onclick="calculateCI()">Calculate</button>
 
-    <!-- Price List -->
-    <h2>Price List</h2>
-    <table>
-        <tr>
-            <th>Service</th>
-            <th>Price</th>
-        </tr>
-        <tr>
-            <td>Washing and Drying</td>
-            <td>$10.00</td>
-        </tr>
-        <tr>
-            <td>Ironing and Folding</td>
-            <td>$5.00</td>
-        </tr>
-    </table>
-
-    <!-- Booking Form -->
-    <h2>Book Now</h2>
-    <form>
-        Name: <input type="text" required>
-        Email: <input type="email" required>
-        Phone: <input type="text" required>
-        <button type="submit">Submit</button>
-    </form>
-
-    <footer>
-        <p>Contact us at: info@laundrymart.com</p>
-    </footer>
-
+    <div class="result" id="result"></div>
 </div>
+
+<script>
+function calculateCI() {
+    let P = document.getElementById("principal").value;
+    let R = document.getElementById("rate").value;
+    let T = document.getElementById("time").value;
+
+    let amount = P * Math.pow((1 + R / 100), T);
+    let CI = amount - P;
+
+    document.getElementById("result").innerHTML =
+        "Compound Interest: ₹" + CI.toFixed(2);
+}
+</script>
 
 </body>
 </html>
